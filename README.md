@@ -13,9 +13,9 @@
 ## Screenshots
 
 Merge interface:  
-![Merge interface](<docs/img/demo 01.png>)
+![Merge interface](<docs/img/Demo 01.png>)
 
 Reading-stats page:  
-![Reading stats](<docs/img/demo 02.png>)
+![Reading stats](<docs/img/Demo 02.png>)
 
 ---
