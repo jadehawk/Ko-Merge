@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2 class="text-center">Select KOReader Statistics Database</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <input
+        class="form-control"
+        type="file"
+        name="dbfile"
+        accept=".sqlite3"
+        required>
+    </div>
+    <div class="text-center">
+    <button class="btn btn-center btn-primary">Upload & Validate</button>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h2 class="mb-4 text-center">Choose Books to Merge</h2>
+
+  <form method="POST">
+    <input type="hidden" name="action" value="add_group">
+
+    <div class="row gx-4 mb-3">
+      <!-- KEEP pane -->
+      <div class="col-lg-6">
+        <label class="form-label">
+          📕 Select "Book & MD5" combo to KEEP
+        </label>
+        <div class="pane keep">
+          <!-- STICKY HEADER -->
+          <div class="pane-header">
+            <div></div>
+            <div>ID</div>
+            <div>Title</div>
+            <div>MD5</div>
+            <div>Time</div>
+          </div>
+
+          {% for id, title, time, md5 in books %}
+            <div class="pane-row form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="keep_id"
+                id="keep{{ id }}"
+                value="{{ id }}"
+                required>
+              <div>{{ id }}</div>
+              <div>{{ title }}</div>
+              <div>{{ md5 or "None" }}</div>
+              <div>{{ time|format_time }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- MERGE pane -->
+      <div class="col-lg-6">
+        <label class="form-label">📚 Books to MERGE</label>
+        <div class="pane merge">
+          <!-- STICKY HEADER -->
+          <div class="pane-header">
+            <div></div>
+            <div>ID</div>
+            <div>Title</div>
+            <div>MD5</div>
+            <div>Time</div>
+          </div>
+
+          {% for id, title, time, md5 in books %}
+            <div class="pane-row form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name="merge_ids"
+                id="merge{{ id }}"
+                value="{{ id }}">
+              <div>{{ id }}</div>
+              <div>{{ title }}</div>
+              <div>{{ md5 or "None" }}</div>
+              <div>{{ time|format_time }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Merge Group button -->
+    <div class="row mb-5">
+      <div class="col text-center">
+        <button type="submit" class="btn btn-success btn-lg">
+          ➕ Add Merge Group
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Merge Batches display -->
+  <div class="mb-4">
+    <h5>Merge Batches</h5>
+    <ul class="list-group">
+      {% for keep, merges in batches %}
+        <li class="list-group-item">
+          Keep {{ keep }} ← Merge {{ merges|join(", ") }}
+        </li>
+      {% else %}
+        <li class="list-group-item text-muted">
+          No batches defined
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Other actions -->
+  <form method="POST" class="d-flex justify-content-center gap-3 my-4">
+    <button
+      name="action"
+      value="remove_last"
+      class="btn btn-warning btn-lg">
+      ❌ Remove Last
+    </button>
+    <button
+      name="action"
+      value="clear_groups"
+      class="btn btn-secondary btn-lg">
+      🧹 Clear All
+    </button>
+    <button
+      name="action"
+      value="run_all"
+      class="btn btn-primary btn-lg">
+      🚀 Run All Merges
+    </button>
+  </form>
+{% endblock %}
