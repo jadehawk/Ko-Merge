@@ -1,4 +1,5 @@
 import os
+import streamlit
 import secrets
 import logging
 import sys
@@ -495,6 +496,7 @@ _self_request()
 
 
 if __name__ == "__main__":
-    host = os.environ.get("FLASK_RUN_HOST", "0.0.0.0")
-    port = int(os.environ.get("FLASK_RUN_PORT", 5025))
-    app.run(host=host, port=port)
+    #commented out 
+    #host = os.environ.get("FLASK_RUN_HOST", "0.0.0.0")
+    #port = int(os.environ.get("FLASK_RUN_PORT", 5025))
+    #app.run(host=host, port=port)
