@@ -495,7 +495,7 @@ def _self_request():
 _self_request()
 
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
     #commented out 
     #host = os.environ.get("FLASK_RUN_HOST", "0.0.0.0")
     #port = int(os.environ.get("FLASK_RUN_PORT", 5025))
