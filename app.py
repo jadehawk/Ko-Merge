@@ -58,6 +58,7 @@ app.secret_key = secret
 # 1) Decide if we’re mounted under /ko-merge
 # ─── Sub-folder mounting toggle ────────────────────────────────
 USE_SUB = os.environ.get("USE_SUBFOLDER", "").lower() in ("1", "true", "yes")
+print(USE_SUB)
 if USE_SUB:
     def not_found_app(environ, start_response):
         res = Response("Not Found", status=404)
@@ -407,66 +408,6 @@ def format_time_filter(seconds):
     mins = (total % 3600) // 60
     secs = total % 60
     return f"{hrs:02d}h:{mins:02d}m:{secs:02d}s"
-#=========================================================================
-# Stats Call
-#=========================================================================
-def fetch_stats(path):
-    """
-    Returns a list of rows with these keys:
-      - book_id
-      - title
-      - total_read_time       (sum of all durations, de-duplicated)
-      - total_events          (how many page_stat rows we counted)
-      - unique_durations      (count of distinct duration values)
-      - avg_duration          (avg seconds per event)
-      - secs_per_page         (seconds_of_reading / distinct_pages)
-      - pages_per_sec         (events per second_of_reading)
-    """
-    con = sqlite3.connect(path)
-    con.row_factory = sqlite3.Row
-    cur = con.cursor()
-
-    cur.execute("""
-    WITH uniq AS (
-      SELECT DISTINCT id_book, page, start_time, duration
-      FROM page_stat
-    )
-    SELECT
-      b.id              AS book_id,
-      b.title           AS title,
-      SUM(u.duration)   AS total_read_time,
-      COUNT(*)          AS total_events,
-      COUNT(DISTINCT u.duration) AS unique_durations,
-      AVG(u.duration)   AS avg_duration,
-      -- seconds per page: total_time / distinct pages read
-      ROUND(SUM(u.duration) / COUNT(DISTINCT u.page), 4)
-                        AS secs_per_page,
-      -- pages per second: distinct pages / total_time
-      ROUND(COUNT(DISTINCT u.page) / SUM(u.duration), 4)
-                        AS pages_per_sec
-    FROM uniq AS u
-    JOIN book AS b
-      ON u.id_book = b.id
-    GROUP BY b.id, b.title
-    ORDER BY b.title;
-    """)
-    rows = cur.fetchall()
-    con.close()
-    return rows
-
-@app.route("/stats")
-def stats():
-    upload_db = session.get("upload_db")
-    if not upload_db:
-        return redirect(url_for("index"))
-
-    path = os.path.join(app.config["UPLOAD_FOLDER"], upload_db)
-    stats = fetch_stats(path)    # whatever your DB filepath var is
-    # format times for human friendliness
-    for row in stats:
-        row["total_read_time_fmt"] = format_time_filter(row["total_read_time"])
-    return render_template("stats.html", stats=stats)
-
 
 # ──── CONTEXT PROCESSOR ───────────────────────────────────────────────────
 @app.context_processor
