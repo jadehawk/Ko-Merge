@@ -8,7 +8,7 @@
 
 You find a Web App already running ready for use at https://send2ereader.net/ko-merge
 ---
-## Whant easier way to host your own version?
+## Want to host your own version?
 - Use Railway
 
   [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/7c06ld?referralCode=Wh_8RG)
