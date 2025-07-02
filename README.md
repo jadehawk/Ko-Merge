@@ -7,7 +7,13 @@
 - This was a weekend project to fix my issue and nothing else, It worked but YMMV, please only use this when you have made a good backup of your statistics.sqlite3 database. I am not responsible for lost stats. Used it, review it, enjoy it.
 
 You find a Web App already running ready for use at https://send2ereader.net/ko-merge
+---
+## Whant easier way to host your own version?
+- Use Railway
 
+  [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/7c06ld?referralCode=Wh_8RG)
+
+---
 ## Features
 
 - Merge multiple KOReader stats entries under one “keep” book  
