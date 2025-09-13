@@ -6,6 +6,50 @@
 
 KOReader Statistics Database Merger with Modern UI
 
+## 📸 Screenshots
+
+### Main Interface - Book Library View
+
+![Main Interface](screenshots/Screenshot-001.png)
+
+Modern library-style grid layout with book covers and prominent MD5 display for easy merge identification.
+
+### Book Details and Metadata
+
+![Book Details](screenshots/Screenshot-002.png)
+
+Rich metadata integration from Google Books, OpenLibrary, and Amazon APIs with enhanced book information.
+
+### Cover Selection Interface
+
+![Cover Selection](screenshots/Screenshot-003.png)
+
+Multi-source cover fetching with source-specific badges (GB, OL, AZ) and manual cover search functionality.
+
+### Merge Groups Configuration
+
+![Merge Groups](screenshots/Screenshot-004.png)
+
+Intuitive merge group setup with visual selection states and clear Keep/Merge indicators.
+
+### Processing Results
+
+![Processing Results](screenshots/Screenshot-005.png)
+
+Real-time processing feedback with detailed results and download counter tracking successful merges.
+
+### Dark Mode Interface
+
+![Dark Mode](screenshots/Screenshot-006.png)
+
+Fully optimized dark mode with Tailwind CSS v4+ providing comfortable viewing in low-light environments.
+
+### Mobile Responsive Design
+
+![Mobile Design](screenshots/Screenshot-007.png)
+
+Responsive design that adapts from single column on mobile to 4+ column grid on desktop.
+
 ## 🚀 Features
 
 - **Modern UI**: Library-style grid layout with book covers and prominent MD5 display
