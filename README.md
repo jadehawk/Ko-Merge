@@ -1,5 +1,9 @@
 # Ko-Merge
 
+![Ko-Merge Logo](logo.png)
+
+KOReader Statistics Database Merger with Modern UI
+
 ## 🚀 Features
 
 - **Modern UI**: Library-style grid layout with book covers and prominent MD5 display
@@ -115,7 +119,7 @@ For development, see the development documentation in the repository.
 - **Session-based merge operations** with temporary file handling
 - **Amazon scraping integration** with Playwright and request deduplication
 - **Unified cover storage system** with local image downloading and serving
-- **Automated cleanup service** running every 10 minutes with session protection
+- **Automated cleanup service** running every 2 hours with session protection
 - **SHA256-based book identification** using title+author (no MD5 dependency)
 - **Global caching system** with title/author normalization
 - **Windows + Python 3.13 compatibility** with proper event loop policies
@@ -200,15 +204,8 @@ Ko-Mergev2/
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `GOOGLE_BOOKS_API_KEY` | - | Google Books API key for enhanced metadata |
-| `AMAZON_SCRAPING_ENABLED` | `true` | Enable/disable Amazon book scraping |
-| `CLEANUP_INTERVAL_MINUTES` | `10` | Cleanup service interval |
-
-#### Legacy Variables (Deprecated)
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `DEPLOYMENT_PATH` | `/ko-merge` | Legacy subfolder path (use PUBLIC_SUBFOLDER_PATH instead) |
+| `GOOGLE_BOOKS_API_KEY` | - | **Highly recommended** - Google Books API key for high-quality covers and rich metadata |
+| `CLEANUP_INTERVAL_MINUTES` | `120` | Cleanup service interval (in minutes) |
 
 ### Google Books API Setup
 
