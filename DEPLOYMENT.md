@@ -55,8 +55,7 @@ PUBLIC_SUBFOLDER_PATH=ko-merge
 
 # API settings
 GOOGLE_BOOKS_API_KEY=your_google_books_api_key
-AMAZON_SCRAPING_ENABLED=true
-CLEANUP_INTERVAL_MINUTES=10
+CLEANUP_INTERVAL_MINUTES=120
 
 # System settings
 PUID=1000
@@ -186,8 +185,7 @@ For Unraid users, use this template:
   <Config Name="Base URL" Target="PUBLIC_BASE_URL" Default="http://[IP]:[PORT:3000]" Mode="" Description="Base URL for the application" Type="Variable" Display="always" Required="false" Mask="false">http://[IP]:[PORT:3000]</Config>
   <Config Name="Use Subfolder" Target="USE_SUBFOLDER" Default="false" Mode="" Description="Enable subfolder deployment" Type="Variable" Display="always" Required="false" Mask="false">false</Config>
   <Config Name="Subfolder Path" Target="PUBLIC_SUBFOLDER_PATH" Default="" Mode="" Description="Subfolder path (leave empty for root deployment)" Type="Variable" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="Google Books API Key" Target="GOOGLE_BOOKS_API_KEY" Default="" Mode="" Description="Google Books API key for enhanced metadata (optional)" Type="Variable" Display="always" Required="false" Mask="true"></Config>
-  <Config Name="Amazon Scraping" Target="AMAZON_SCRAPING_ENABLED" Default="true" Mode="" Description="Enable Amazon book scraping" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Google Books API Key" Target="GOOGLE_BOOKS_API_KEY" Default="" Mode="" Description="Google Books API key for high-quality covers and rich metadata (highly recommended)" Type="Variable" Display="always" Required="false" Mask="true"></Config>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID" Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID" Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
 </Container>

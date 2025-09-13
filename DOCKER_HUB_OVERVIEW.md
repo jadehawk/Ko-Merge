@@ -51,8 +51,7 @@ docker run -d \
 | `PUBLIC_BASE_URL` | - | Base URL for the application |
 | `PUBLIC_SUBFOLDER_PATH` | - | Subfolder path for deployment |
 | `USE_SUBFOLDER` | `false` | Enable subfolder deployment mode |
-| `GOOGLE_BOOKS_API_KEY` | - | Google Books API key for enhanced metadata (falls back to OpenLibrary if not set) |
-| `AMAZON_SCRAPING_ENABLED` | `true` | Enable/disable Amazon book scraping |
+| `GOOGLE_BOOKS_API_KEY` | - | **Highly recommended** - Google Books API key for high-quality covers and rich metadata |
 | `PUID` | `99` | User ID (Unraid default) |
 | `PGID` | `100` | Group ID (Unraid default) |
 
