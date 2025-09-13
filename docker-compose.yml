@@ -1,0 +1,58 @@
+# Ko-Merge - Flexible Deployment Docker Compose
+# Uses pre-built Docker Hub image for easy deployment
+# cSpell:ignore healthcheck
+services:
+  ko-merge:
+    image: jadehawk/ko-merge:latest
+    container_name: ko-merge
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-3000}:8000"
+    volumes:
+      - "${DATA_PATH:-./data}:/app/data"
+    environment:
+      # User and Group IDs (for Unraid compatibility)
+      - PUID=${PUID:-99}
+      - PGID=${PGID:-100}
+      
+      # Flexible Deployment Configuration (Runtime)
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-}
+      - PUBLIC_SUBFOLDER_PATH=${PUBLIC_SUBFOLDER_PATH:-}
+      - USE_SUBFOLDER=${USE_SUBFOLDER:-false}
+      
+      # API Keys
+      - GOOGLE_BOOKS_API_KEY=${GOOGLE_BOOKS_API_KEY:-}
+      - AMAZON_SCRAPING_ENABLED=${AMAZON_SCRAPING_ENABLED:-true}
+      
+      # Storage Configuration
+      - COVER_STORAGE_PATH=/app/data/covers
+      - CLEANUP_INTERVAL_MINUTES=${CLEANUP_INTERVAL_MINUTES:-10}
+      
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+# Example configurations for different deployment scenarios:
+
+# 1. Root Domain Deployment (https://mydomain.com)
+# PUBLIC_BASE_URL=https://mydomain.com
+# USE_SUBFOLDER=false
+# PUBLIC_SUBFOLDER_PATH=
+
+# 2. Subfolder Deployment (https://mydomain.com/ko-merge)
+# PUBLIC_BASE_URL=https://mydomain.com
+# USE_SUBFOLDER=true
+# PUBLIC_SUBFOLDER_PATH=/ko-merge
+
+# 3. Custom Port (http://192.168.1.100:5173)
+# PUBLIC_BASE_URL=http://192.168.1.100:5173
+# USE_SUBFOLDER=false
+# PUBLIC_SUBFOLDER_PATH=
+
+# 4. Development (default)
+# PUBLIC_BASE_URL=
+# USE_SUBFOLDER=false
+# PUBLIC_SUBFOLDER_PATH=

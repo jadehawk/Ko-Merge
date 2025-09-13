@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "python": "D:/OneDrive/GitHubRepos/Ko-Mergev2/.venv/Scripts/python.exe"
+        },
+        {
+            "name": "FastAPI Backend",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/app/main.py",
+            "console": "integratedTerminal",
+            "python": "D:/OneDrive/GitHubRepos/Ko-Mergev2/.venv/Scripts/python.exe"
+        }
+    ]
+}

@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* Custom CSS for Ko-Merge specific components */
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  @apply w-12 h-12 mx-auto border-2 rounded-full border-slate-700 border-t-blue-600;
+  animation: spin 1s linear infinite;
+}
+
+/* File upload drag and drop styles */
+.file-upload-area {
+  @apply p-12 text-center transition-all duration-200 border-2 border-dashed rounded-lg cursor-pointer border-slate-600;
+}
+
+.file-upload-area:hover {
+  @apply border-slate-500;
+}
+
+.file-upload-area.drag-over {
+  @apply border-blue-600 bg-blue-600/10;
+}
+
+/* Book card hover effects */
+.book-card {
+  @apply transition-all duration-200 hover:shadow-lg hover:shadow-blue-600/20 hover:-translate-y-1;
+}
+
+/* MD5 hash styling for prominence */
+.md5-hash {
+  @apply px-2 py-1 font-mono text-sm border rounded bg-blue-600/20 text-blue-300 border-blue-600/30;
+}
+
+/* Book cover placeholder */
+.book-cover-placeholder {
+  @apply flex items-center justify-center text-lg font-semibold bg-gradient-to-br from-slate-700 to-slate-800 text-slate-400;
+}
+
+/* Fixed aspect ratio for book covers */
+.aspect-book {
+  aspect-ratio: 3 / 4;
+}
+
+/* Fixed height containers for uniform card layout */
+.book-title-container {
+  @apply h-10; /* Fixed height for 2 lines of text */
+}
+
+.book-authors-container {
+  @apply h-8; /* Fixed height for 2 lines of authors */
+}
+
+.book-series-container {
+  @apply h-6; /* Fixed height for 2 lines of series */
+}
+
+.book-md5-container {
+  @apply h-12; /* Fixed height for MD5 hash display */
+}
+
+.book-info-container {
+  @apply h-5; /* Fixed height for ID and reading time */
+}
+
+/* Smaller book cover for compact layout */
+.book-cover-small {
+  @apply w-32 h-44 mx-auto; /* Medium-sized centered cover maintaining 3:4 ratio */
+}
+
+/* Selection states for merge operations */
+.selected-keep {
+  @apply border-green-600 bg-green-600/20 ring-2 ring-green-600/50;
+}
+
+.selected-merge {
+  @apply border-red-600 bg-red-600/20 ring-2 ring-red-600/50;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded bg-slate-600;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-500;
+}
+
+/* Ensure dark mode is applied to the root */
+html {
+  color-scheme: dark;
+}
+
+body {
+  @apply min-h-screen font-sans antialiased bg-slate-900 text-slate-50;
+}
