@@ -1,5 +1,6 @@
-[![Docker Image CI](https://github.com/jadehawk/Ko-Merge/actions/workflows/docker-image.yml/badge.svg)](https://github.com/jadehawk/Ko-Merge/actions/workflows/docker-image.yml)
 # Ko-Merge
+
+[![Docker Image CI](https://github.com/jadehawk/Ko-Merge/actions/workflows/docker-image.yml/badge.svg)](https://github.com/jadehawk/Ko-Merge/actions/workflows/docker-image.yml)
 
 ![Ko-Merge Logo](logo.png)
 
